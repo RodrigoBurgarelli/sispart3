@@ -14,7 +14,7 @@ from flasgger import swag_from
 bp_reembolso = Blueprint('reembolso', __name__, url_prefix='/reembolso')
 
 @bp_reembolso.route('/todos-reembolsos', methods=['GET'])
-def pegar_dados():
+def pegar_todos_reembolsos():
 
     reembolsos = db.session.execute(
         db.select(Reembolso)
@@ -24,7 +24,7 @@ def pegar_dados():
     reembolsos = [reembolso.all_data() for reembolso in reembolsos]
     return jsonify(reembolsos), 200
 
-@bp_reembolso.route('/cadastrar-reembolso', methods=['POST'])
+@bp_reembolso.route('/cadastrar', methods=['POST'])
 @swag_from('../docs/reembolso/cadastrar_reembolso.yml')
 def cadastrar_novo_reembolso():
     
@@ -49,8 +49,7 @@ def cadastrar_novo_reembolso():
         
     )
     
-    db.session.add(novo_reembolso) # é como se no banco de dados tivesse sido colocado INSERT INTO tb_colaborador (nome, email, senha, cargo, salario) VALUES ('samuel', 'samueltigrao@gmail.com', '1234', 'clientes', 120)
-    db.session.commit() # CLique no raio do workbench
+    db.session.add(novo_reembolso)
+    db.session.commit()
     
     return jsonify( {'mensagem': 'Reembolso cadastrado com sucesso'} ), 201
-
