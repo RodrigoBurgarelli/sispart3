@@ -11,10 +11,17 @@ from flasgger import swag_from
 bp_colaborador = Blueprint('colaborador', __name__, url_prefix='/colaborador')
 
 
-@bp_colaborador.route('/pegar-dados', methods=['GET'])
-def pegar_dados():
+@bp_colaborador.route('/todos-colaboradores', methods=['GET'])
+def pegar_todos_colaboradores():
 
-    return jsonify(dados), 200
+    colaboradores = db.session.execute(
+        db.select(Colaborador)
+    ).scalars().all()
+
+#                       expressão                   item              iteravel  
+    colaboradores = [colaborador.all_data() for colaborador in colaboradores]
+    
+    return jsonify(colaboradores), 200
 
 @bp_colaborador.route('/cadastrar', methods=['POST'])
 @swag_from('../docs/colaborador/cadastrar_colaborador.yml')

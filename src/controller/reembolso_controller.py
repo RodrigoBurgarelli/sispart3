@@ -13,10 +13,16 @@ from flasgger import swag_from
 
 bp_reembolso = Blueprint('reembolso', __name__, url_prefix='/reembolso')
 
-@bp_reembolso.route('/pegar-dados', methods=['GET'])
+@bp_reembolso.route('/todos-reembolsos', methods=['GET'])
 def pegar_dados():
 
-    return jsonify(dados), 200
+    reembolsos = db.session.execute(
+        db.select(Reembolso)
+    ).scalars().all()
+
+#                       expressão                   item              iteravel  
+    reembolsos = [reembolso.all_data() for reembolso in reembolsos]
+    return jsonify(reembolsos), 200
 
 @bp_reembolso.route('/cadastrar', methods=['POST'])
 @swag_from('../docs/reembolso/cadastrar_reembolso.yml')

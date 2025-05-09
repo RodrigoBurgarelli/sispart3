@@ -30,3 +30,12 @@ class Colaborador(db.Model): # db.Model serve para mapear essa classe
             'email': self.email,
             'senha': self.senha,
         }
+        
+    def all_data(self) -> dict:
+        return{
+            'id': self.id,
+            'nome': self.nome,
+            'cargo': self.cargo,
+            'salario': self.salario,
+            'email': self.email
+        }
