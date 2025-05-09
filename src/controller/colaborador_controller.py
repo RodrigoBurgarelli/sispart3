@@ -1,4 +1,3 @@
-
 from flask import Blueprint, request, jsonify
 from src.model.colaborador_model import Colaborador
 from src.model import db
@@ -67,7 +66,7 @@ def login():
     
     if not email or not senha:
         return jsonify({'mensagem': 'Todos os campos devem ser preenchidos'}), 400
-                                    #Query para o banco de dados
+                        #Query para o banco de dados
     colaborador = db.session.execute(db.select(Colaborador).where(Colaborador.email == dados_requisicao['email'])).scalar() # Pedir para retornar um único resultado ou None se não tiver nada
     
     
@@ -76,7 +75,6 @@ def login():
         return jsonify({'mensagem': 'O usuário não foi encontrado'}), 404
     
     colaborador = colaborador.to_dict()
-       
 
     if colaborador.get('email') == email and checar_senha(senha, colaborador.get('senha')):
         return jsonify({'mensagem': 'Login realizado com sucesso'}), 200
