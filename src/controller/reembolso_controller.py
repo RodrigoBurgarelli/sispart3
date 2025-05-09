@@ -24,7 +24,7 @@ def pegar_dados():
     reembolsos = [reembolso.all_data() for reembolso in reembolsos]
     return jsonify(reembolsos), 200
 
-@bp_reembolso.route('/cadastrar', methods=['POST'])
+@bp_reembolso.route('/cadastrar-reembolso', methods=['POST'])
 @swag_from('../docs/reembolso/cadastrar_reembolso.yml')
 def cadastrar_novo_reembolso():
     

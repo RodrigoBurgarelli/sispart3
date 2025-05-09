@@ -76,7 +76,6 @@ def login():
         return jsonify({'mensagem': 'O usuário não foi encontrado'}), 404
     
     colaborador = colaborador.to_dict()
-       
 
     if colaborador.get('email') == email and checar_senha(senha, colaborador.get('senha')):
         return jsonify({'mensagem': 'Login realizado com sucesso'}), 200
