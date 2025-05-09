@@ -4,7 +4,7 @@ from sqlalchemy.types import String, DECIMAL, Integer #Traz o recurso que identi
 
 class Colaborador(db.Model): # db.Model serve para mapear essa classe
     
-    # ----------------------Atributos------------------------
+    # ----------------------Atributos------------------------------
     id = Column(Integer, primary_key=True, autoincrement=True) # igual ir no banco de ados e estipuar id INT AUTO_INCREMENT PRIMARYKEY
     
     nome = Column(String(255)) #igual a ir no banco de dados e estipular VARCHAR(255)
