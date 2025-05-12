@@ -46,7 +46,7 @@ def cadastrar_novo_colaborador():
 def atualizar_dados_do_colaborador(id_colaborador):
     dados_requisicao = request.get_json()
     
-    for colaborador in dados:
+    for colaborador in id_colaborador:
         if colaborador['id'] == id_colaborador:
             colaborador_encontrado = colaborador
             break

@@ -4,6 +4,6 @@ from dotenv import load_dotenv # essa linha traz a função para carregar as var
 load_dotenv() # Carrega as variáveis de ambiente para este arquivo
 
 class Config():
-    SQLALCHEMY_DATABASE_URI = environ.get('URL_DATABASE_PROD') # Puxa a variável e utiliza para a conexão
+    SQLALCHEMY_DATABASE_URI = environ.get('URL_DATABASE_DEV') # Puxa a variável e utiliza para a conexão
     SQLALCHEMY_TRACK_MODIFICATION = False #Otimiza as querys no banco de dados
     
