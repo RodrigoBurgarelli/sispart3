@@ -52,4 +52,16 @@ def cadastrar_novo_reembolso():
     db.session.add(novo_reembolso)
     db.session.commit()
     
+    colaborador = dados_requisicao.get('colaborador')
+    empresa = dados_requisicao.get('empresa')
+    senha = dados_requisicao.get('senha')
+    data = dados_requisicao.get('data')
+    tipo_reembolso = dados_requisicao.get('tipo_reembolso')
+    centro_custo = dados_requisicao.get('centro_custo')
+    moeda = dados_requisicao.get('moeda')
+    valor_faturado = dados_requisicao.get('valor_faturado')
+
+    if not colaborador or not empresa or not senha or not data or not tipo_reembolso or not centro_custo or not moeda or not valor_faturado:
+        return jsonify ({'mensagem': 'Os campos necessarios nao foram todos preenchidos'}), 400
+    
     return jsonify( {'mensagem': 'Reembolso cadastrado com sucesso'} ), 201

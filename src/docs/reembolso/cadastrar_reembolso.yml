@@ -1,0 +1,74 @@
+tags:
+  - Reembolso
+description: Endpoint para cadastrar um novo reembolso
+
+parameters:
+  - in: body 
+    name: corpo 
+    required: true
+    
+    schema: 
+      type: object
+      properties:
+        colaborador: 
+          type: string
+          example: Joao da Silva
+        empresa:
+          type: string
+          example: Abc ltda
+        descricao:
+          type: string
+          example: reembolso referente a almoço com reunião
+        data:
+          type: date
+          example: 10/01/2025
+        tipo_reembolso:
+          type: string
+          example: Alimentacao
+        centro_custo:
+          type: string
+          example: 1100109002 - FIN CONTROLE INTERNON MTZ
+        ordem_interna:
+          type: string
+          example: 123456
+        divisao:
+          type: string
+          example: 010
+        pep:
+          type: string
+          example: 352
+        moeda:
+          type: string
+          example: BRA
+        distancia_km:
+          type: string 
+          example: 10
+        valor_km:
+          type: string
+          example: 6
+        valor_faturado:
+          type: decimal
+          example: 10.20
+        despesa:
+          type: decimal
+          example: 30.00
+        id_colaborador:
+          type: integer
+          example: 123
+        status:
+          type: string
+          example: Aprovado
+      required:
+        - colaborador
+        - empresa
+        - senha
+        - data
+        - tipo_reembolso
+        - centro_custo
+        - moeda
+        - valor_faturado
+responses:
+  201:
+    description: Reembolso cadastrado com sucesso
+  400:
+    description: Os campos necessarios nao foram todos preenchidos

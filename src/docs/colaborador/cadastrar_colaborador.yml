@@ -23,7 +23,7 @@ parameters:
           type: string
           example: QA
         salario:
-          type: numeber
+          type: number
           example: 2500.78
       required:
         - nome
@@ -33,7 +33,7 @@ parameters:
         - salario
 responses:
   201:
-    description: Colaborador cadastrado com sucesso
+    description: Reembolso cadastrado com sucesso
   400:
     description: Erro ao cadastrar colaborador
   401:
