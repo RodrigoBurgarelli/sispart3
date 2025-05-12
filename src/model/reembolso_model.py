@@ -22,7 +22,7 @@ class Reembolso(db.Model):
     valor_km = Column(String(50))
     valor_faturado = Column(DECIMAL(10,2), nullable=False)
     despesa = Column(DECIMAL(10,2))
-    id_colaborador = Column(Integer(ForeignKey(column='colaborador.id')))
+    id_colaborador = Column(Integer, ForeignKey(column='colaborador.id'))
     status = Column(String(25))
     
 # --------------------------------------------------------------------
